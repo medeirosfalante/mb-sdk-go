@@ -53,8 +53,8 @@ type TradeQuery struct {
 }
 
 type Book struct {
-	Asks []Ask `json:"asks"`
-	Bids []Bid `json:"bids"`
+	Asks []BookItem `json:"asks"`
+	Bids []BookItem `json:"bids"`
 }
 
 type TradeResponse []TradeItem
@@ -67,19 +67,12 @@ type TradeItem struct {
 	Type   string  `json:"type"`
 }
 
-type Ask []float64
-type Bid []float64
+type BookItem []float64
 
-func (c Ask) Price() float64 {
+func (c BookItem) Price() float64 {
 	return c[0]
 }
-func (c Ask) Amount() float64 {
-	return c[1]
-}
-func (c Bid) Price() float64 {
-	return c[0]
-}
-func (c Bid) Amount() float64 {
+func (c BookItem) Amount() float64 {
 	return c[1]
 }
 
